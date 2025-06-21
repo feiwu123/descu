@@ -1,0 +1,31 @@
+// import dark theme
+@use "element-plus/theme-chalk/src/dark/css-vars.scss" as *;
+
+:root {
+  --ep-fill-color-blank:#f6f6f6;
+  --ep-color-primary:
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+a {
+  color: var(--ep-color-primary);
+}
+
+.ep-checkbox.ep-checkbox--large .ep-checkbox__inner{
+	width: 18px!important;
+	height: 18px!important;
+}
+
+.userCenterCon{
+	min-height:calc(100vh - 128px)
+}
+.ep-select__wrapper.is-focused {
+    box-shadow: 0 0 0 1px var(--ep-color-primary) inset;
+}
