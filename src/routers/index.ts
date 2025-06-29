@@ -53,7 +53,7 @@ router.beforeEach(async (to, from, next) => {
 	if (ROUTER_WHITE_LIST.includes(to.path)) return next();
 
 	// 5.判断是否有 Token，没有重定向到 login
-	if (!globalStore.token) return next({ path: LOGIN_URL, replace: true });
+	//if (!globalStore.token) return next({ path: LOGIN_URL, replace: true });
 
 	// 6.如果没有菜单列表，就重新请求菜单列表并添加动态路由
 	// const authStore = AuthStore();

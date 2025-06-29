@@ -1,12 +1,12 @@
 <template>
 	<div>
 		<Header />
-		<div class="centerCon xl:w-1550px mx-auto" >
-			<div class="topCon flex justify-between items-center">
+		<div class="centerCon box-border lg:w-80% mx-auto <lg:(w-100% px-5%) <md:w-100%" >
+			<div class="topCon flex justify-between items-center flex-wrap">
 				<div class="name font-semibold text-24px">
-					商品列表
+					Descuentos
 				</div>
-				<div class="filterCate flex gap-32px">
+				<div class="filterCate flex gap-32px flex-wrap">
 					<div class="cateFilter">
 						<el-select
 						  v-model="category"
@@ -41,18 +41,18 @@
 					</div>
 				</div>
 			</div>
-			<div class="productList flex flex-wrap gap-16px mt-32px">
-				<div class="productItem" v-for="(item,index) in productList" key="index">
+			<div class="productList gap-16px mt-32px grid grid-cols-5 lg:grid-cols-5 <lg:grid-cols-4 <md:grid-cols-2">
+				<div class="productItem w-100%" v-for="(item,index) in productList" key="index">
 					<a class="no-underline" :href="item.detail_url" target="_blank">
 						<div class="productImg">
-							<img :src="item.image_url" />
+							<el-image class="w-100%" :src="item.image_url" lazy loading="lazy" />
 						</div>
 						<div class="discout font-bold color-[#FD6C07] text-14px mt-16px">
 							{{item.discount_rate}}
 						</div>
 						<div class="price mt-12px">
-							<span class="discount_price">${{item.discount_price}}MXN</span>
-							<span class="origin_price">${{item.original_price}}MXN</span>
+							<span class="discount_price text-18px <md:text-[14px]">${{item.discount_price}}MXN</span>
+							<span class="origin_price text-14px <md:text-[12px]">${{item.original_price}}MXN</span>
 						</div>
 						<div class="productTitle mt-8px">
 							{{item.title}}
@@ -62,7 +62,7 @@
 			</div>
 			<div class="showMore w-156px h-46px bg-[#2B2B2B] text-center leading-[46px] color-[#fff] rounded-6px my-54px mx-auto cursor-pointer" 
 			@click="getMoreProduct" v-if="hasProduct">
-				View More
+				Ver más
 			</div>
 		</div>
 		<Footer></Footer>
@@ -77,9 +77,9 @@ import { ElMessage } from "element-plus";
 
 
 const router = useRouter();
-const pageSize = ref(10);
+const pageSize = ref(30);
 const page = ref(1);
-const category = ref("All");
+const category = ref("Todo");
 const sort = ref("Default");
 const categoryList = ref([]);
 const productList = ref([]);
@@ -87,18 +87,18 @@ const hasProduct = ref(true);
 
 const sortList = ref([
 	{
-	label:'Default',
+	label:'Por defecto',
 	value:'Default'
-},{label:'Price ascending',
+},{label:'Precio ascendente',
 	value:'Price ascending',
 	},{
-		label:'Price descending',
+		label:'Precio descendiente',
 		value:'Price descending'
 	},{
-		label:'Discount ascending',
+		label:'Descuento ascendente',
 		value:'Discount ascending'
 	},{
-		label:'Discount descending',
+		label:'Descuento descendente',
 		value:'Discount descending'
 	}]);
 
@@ -154,7 +154,6 @@ function getMoreProduct(){
 }
 .productList .productItem{
 	aspect-ratio: 245 / 296;
-	height: 296px;
 	margin-bottom: 24px;
 	cursor: pointer;
 }
@@ -166,13 +165,11 @@ function getMoreProduct(){
 .productList .productItem .price{
 	.discount_price{
 		font-weight: 800;
-		font-size: 18px;
 		color: #333333;
 		line-height: 22px;
 	}
 	.origin_price{
 		font-weight: 400;
-		font-size: 14px;
 		color: #999999;
 		line-height: 17px;
 		text-align: left;

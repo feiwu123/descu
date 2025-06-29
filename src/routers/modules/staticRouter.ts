@@ -7,22 +7,10 @@ import { HOME_URL, LOGIN_URL } from "@/config/config";
 export const staticRouter: RouteRecordRaw[] = [
 	{
 		path: "/",
-		redirect: "/home"
-	},
-	{
-		path: LOGIN_URL,
-		name: "login",
-		component: () => import("@/pages/login/index.vue"),
-		meta: {
-			title: "login"
-		}
-	},
-	{
-		path: "/home",
-		name: "home",
+		name:"Hogar",
 		component: () => import("@/pages/home/index.vue"),
 		meta: {
-			title: "首页"
+			title: "Hogar"
 		}
 	}
 ];
